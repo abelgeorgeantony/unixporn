@@ -18,7 +18,7 @@ do
 done
 
 i=0
-declare -a scrdevices
+declare -a scrlckdevices #array to store scrolllock device names only
 for device in ${devices[@]}; 
 do
 	if [ ${device#*"::"} == "scrolllock" ];
