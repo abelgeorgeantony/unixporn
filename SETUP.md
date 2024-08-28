@@ -3,11 +3,11 @@
 ## Index
  - [Editing sudoers list](#adding-a-user-to-the-sudoers-list)
  - [Turning on night light](#trying-to-turn-on-"night-light"/"blue-light-filter")
-Installing the apps related to my rice
-Changing the size of every text/font
-GNOME shell extensions of the rice
-Adding the minimize and maximise buttons to window titlebars
-Installing custom fonts
+ - [Install apps](#installing-the-apps-related-to-my-rice)
+ - [Change font size](#changing-the-size-of-every-text/font)
+ - [GNOME Shell extensions](#gnome-shell-extensions-of-the-rice)
+ - [Adding window buttons](#adding-the-minimize-and-maximise-buttons-to-window-titlebars)
+ - [Install custom fonts](#installing-custom-fonts)
 
 ### Adding a user to the sudoers list!
 The user account will not be automatically added to the sudoers list. So to add yourself to the sudo list, first go into **su** by executing:
