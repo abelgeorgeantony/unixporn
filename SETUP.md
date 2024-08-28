@@ -57,6 +57,6 @@ For the Hanabi Extension you have to compile it from [source](https://github.com
 To add minimize and maximise buttons to a window, open the **GNOME Tweaks** app and find the option **Window Titlebars** in the sidebar. There you can add the minimize and maximise buttons for most windows.
 
 ### Installing custom fonts
-My native language is Malayalam. So when browsing the web that displays Malayalam, the characters are replaced by placeholder characters. This is because Malayalam fonts are not included with debian. To install a font:\
+My native language is Malayalam. So when browsing the web I sometimes come across content that is displayed in Malayalam, the characters are replaced by placeholder characters. This is because Malayalam fonts are not included with debian. To install a font:\
 First get a font from somewhere(Usually files that end with .ttf, some fonts can be found at **./fonts**). Then put the file in **/usr/local/share/fonts** (to access system-wide), **~/.local/share/fonts** (to access user-specific).
 
