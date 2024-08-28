@@ -1,5 +1,14 @@
 # From Debian 12 fresh installation to rice!
 
+## Index
+ - [Editing sudoers list](#adding-a-user-to-the-sudoers-list)
+Trying to turn on "Night Light"/"Blue light filter"
+Installing the apps related to my rice
+Changing the size of every text/font
+GNOME shell extensions of the rice
+Adding the minimize and maximise buttons to window titlebars
+Installing custom fonts
+
 ### Adding a user to the sudoers list!
 The user account will not be automatically added to the sudoers list. So to add yourself to the sudo list, first go into **su** by executing:
 ```
