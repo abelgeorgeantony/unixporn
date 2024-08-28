@@ -2,7 +2,7 @@
 
 ## Index
  - [Editing sudoers list](#adding-a-user-to-the-sudoers-list)
-Trying to turn on "Night Light"/"Blue light filter"
+ - [Turning on night light](#trying-to-turn-on-"night-light"/"blue-light-filter")
 Installing the apps related to my rice
 Changing the size of every text/font
 GNOME shell extensions of the rice
