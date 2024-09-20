@@ -23,9 +23,9 @@ printf "APT:-"
 for app in ${apt_apps[@]};
 do
     printf "\nTrying to install $app"
-    error="$(sudo apt-get -qq --yes install $app 2>&1)"
-    if [ "${error}" != "" ]; then
-	    installerrors="$installerrors\e[1;31m$error\n\e[0m"
+    sudo apt -y install "$app"
+    appexistcheck="$((( dpkg -l $app 2>&1 ) | grep -E '^ii' > /dev/null ) && echo installed)"
+    if [ "${appexistcheck}" != "installed" ]; then
 	    outputmessage="${outputmessage}\e[1;31m$app not installed\n\e[0m"
     else
 	    outputmessage="${outputmessage}\e[1;32m$app is installed\n\e[0m"
@@ -33,11 +33,13 @@ do
     clear
     printf "${outputmessage}"
 done
-if [ "${installerrors}" != "" ]; then
-	printf "\nErrors produced by APT:"
-	printf "\n$installerrors\n"
-	outputmessage="${outputmessage}\nErrors produced by APT:\n${installerrors}\n"
-fi
+#if [ "${installerrors}" != "" ]; then
+#	printf "\nErrors produced by APT:"
+#	printf "\n$installerrors\n"
+#	outputmessage="${outputmessage}\nErrors produced by APT:\n${installerrors}\n"
+#fi
+
+exit 1
 
 printf "\nSnap:-"
 outputmessage="${outputmessage}\nSnap:-"
