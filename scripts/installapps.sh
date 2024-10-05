@@ -13,7 +13,7 @@ clr () {
 declare -a apt_apps
 declare -a snap_apps
 declare -a flatpak_apps
-apt_apps+=("testmfmfmfjfsfdasfdabelgeorgeantony" "brightnessctl" "build-essential" "nodejs" "npm" "meson" "ninja-build" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "mpv" "gimp" "tmux" "neovim" "vim" "conky-all" "taskwarrior" "gnome-multi-writer")
+apt_apps+=("testmfmfmfjfsfdasfdabelgeorgeantony" "brightnessctl" "build-essential" "nodejs" "npm" "meson" "ninja-build" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "mpv" "audacious" "gimp" "tmux" "neovim" "vim" "conky-all" "taskwarrior" "gnome-multi-writer")
 snap_apps+=("core" "snapd" "code --classic", "scrcpy", "steam", "telegram-desktop")
 flatpak_apps+=("net.lutris.Lutris")
 
