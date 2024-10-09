@@ -9,7 +9,7 @@ mkdir ~/workspace/side/
 mv ../../unixporn ~/workspace/side/
 
 # Making the keyboard-backlight script globally accessible
-sudo cp ./keyscript /bin/
+sudo cp ./keyboard-backlight /bin/
 
 # Running the script that downloads the apps
 sudo ./installapps.sh
