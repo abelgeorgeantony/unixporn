@@ -13,3 +13,6 @@ sudo cp ./keyboard-backlight /bin/
 
 # Running the script that downloads the apps
 sudo ./installapps.sh
+
+# Adding the custom config to conky
+cp ../configs/conky.conf ~/.conkyrc
