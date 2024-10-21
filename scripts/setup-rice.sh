@@ -11,8 +11,11 @@ mv ../../unixporn ~/workspace/side/
 # Making the keyboard-backlight script globally accessible
 sudo cp ./keyboard-backlight /bin/
 
+# Adding custom fonts(System-Wide)
+sudo cp ../fonts/* /usr/local/share/fonts/
+
 # Running the script that downloads the apps
-sudo ./installapps.sh
+#sudo ./installapps.sh
 
 # Adding the custom config to conky
-cp ../configs/conky.conf ~/.conkyrc
+#cp ../configs/conky.conf ~/.conkyrc
