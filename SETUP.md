@@ -9,6 +9,7 @@
  - [Adding window buttons](#adding-the-minimize-and-maximise-buttons-to-window-titlebars)
  - [Install custom fonts](#installing-custom-fonts)
 
+
 ### Adding a user to the sudoers list!
 The user account will not be automatically added to the sudoers list. So to add yourself to the sudo list, first go into **su** by executing:
 ```
@@ -59,4 +60,3 @@ To add minimize and maximise buttons to a window, open the **GNOME Tweaks** app 
 ### Installing custom fonts
 My native language is Malayalam. So when browsing the web I sometimes come across content that is displayed in Malayalam, the characters are replaced by placeholder characters. This is because Malayalam fonts are not included with debian. To install a font:\
 First get a font from somewhere(Usually files that end with .ttf, some fonts can be found at **./fonts**). Then put the file in **/usr/local/share/fonts** (to access system-wide), **~/.local/share/fonts** (to access user-specific).
-
