@@ -6,16 +6,20 @@ then
 	exit
 fi
 
+scriptdir="$(dirname $0)"
+ls $scriptdir/../
+exit
+
 # Creating the workspace directories
 mkdir -pv ~/workspace/main/
 mkdir ~/workspace/side/
 
 # Moving the unixporn directory to side projects directory
-mv ../../unixporn ~/workspace/side/
+mv $scriptdir/../../unixporn ~/workspace/side/
 
 # Adding custom fonts(System-Wide)
 sudo mkdir -pv /usr/local/share/fonts/
-sudo cp ../fonts/* /usr/local/share/fonts/
+sudo cp -r ../fonts/* /usr/local/share/fonts/
 
 # Making the keyboard-backlight script globally accessible
 sudo cp ./utilities/keyboard-backlight /bin/

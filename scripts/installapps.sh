@@ -13,7 +13,7 @@ clr () {
 declare -a apt_apps
 declare -a snap_apps
 declare -a flatpak_apps
-apt_apps+=("build-essential" "brightnessctl" "pavucontrol" "sway" "waybar" "wofi" "gammastep" "wdisplays" "curl" "tree" "fzf" "bat" "htop" "acpi" "nodejs" "npm" "meson" "ninja-build" "cmake" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "mpv" "moc" "moc-ffmpeg-plugin" "audacious" "gimp" "tmux" "neovim" "vim" "mdp" "conky-all" "taskwarrior" "gnome-multi-writer" "libgtk-4-media-gstreamer" "fonts-material-design-icons-iconfont" "fonts-font-awesome")
+apt_apps+=("build-essential" "brightnessctl" "pavucontrol" "sway" "waybar" "fuzzel" "wofi" "gammastep" "wdisplays" "curl" "tree" "fzf" "bat" "htop" "acpi" "nodejs" "npm" "meson" "ninja-build" "cmake" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "nautilus" "imv" "mpv" "moc" "moc-ffmpeg-plugin" "audacious" "qbittorrent" "gimp" "tmux" "neovim" "vim" "mdp" "conky-all" "taskwarrior" "gnome-multi-writer" "libgtk-4-media-gstreamer" "fonts-material-design-icons-iconfont" "fonts-font-awesome")
 snap_apps+=("core" "snapd" "code --classic", "scrcpy", "steam", "telegram-desktop")
 flatpak_apps+=("net.lutris.Lutris")
 
@@ -33,11 +33,15 @@ do
     clear
     printf "${outputmessage}"
 done
+
 #if [ "${installerrors}" != "" ]; then
 #	printf "\nErrors produced by APT:"
 #	printf "\n$installerrors\n"
 #	outputmessage="${outputmessage}\nErrors produced by APT:\n${installerrors}\n"
 #fi
+
+# Installing zed editor
+curl -f https://zed.dev/install.sh | sh
 
 exit 1
 

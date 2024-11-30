@@ -13,22 +13,31 @@ AddConky()
 	sudo rm /etc/conky/conky.conf
 	sudo cp ../configs/conky/conky.conf /etc/conky/
 }
+### bash
+AddBash()
+{
+	cp -r ../configs/bash/. ~/
+	#source ~/.bashrc  #Need to make this work!!
+	echo "Hi from bash"
+}
 ### sway
 AddSway()
 {
 	echo "Hi from sway"
 	mkdir -p ~/.config/sway
-	cp ../configs/sway/* ~/.config/sway/
+	cp -r ../configs/sway/. ~/.config/sway/
+	swaymsg reload
 }
 ### waybar
 AddWaybar()
 {
 	echo "Hi from waybar"
 	mkdir -p ~/.config/waybar
-	cp ../configs/waybar/* ~/.config/waybar/
+	cp -r ../configs/waybar/. ~/.config/waybar/
+	swaymsg reload
 }
 
-if [ "$1" == "--add-all" ]; then
+if [ "$1" == "--update-all" ]; then
 	AddConky
 	AddSway
 	AddWaybar
