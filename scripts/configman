@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ "$EUID" -eq 0 ]
+then
+        echo -e "Do not run the script as root!\nScript stopped!"
+        exit
+fi
+
+# Functions that add the custom configs
+### conky
+AddConky()
+{
+	sudo rm /etc/conky/conky.conf
+	sudo cp ../configs/conky/conky.conf /etc/conky/
+}
+### sway
+AddSway()
+{
+	echo "Hi from sway"
+	mkdir -p ~/.config/sway
+	cp ../configs/sway/* ~/.config/sway/
+}
+### waybar
+AddWaybar()
+{
+	echo "Hi from waybar"
+	mkdir -p ~/.config/waybar
+	cp ../configs/waybar/* ~/.config/waybar/
+}
+
+if [ "$1" == "--add-all" ]; then
+	AddConky
+	AddSway
+	AddWaybar
+elif [ "$1" == "--update" ]; then
+	"Add"$2
+fi

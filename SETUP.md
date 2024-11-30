@@ -1,12 +1,11 @@
-# From Debian 12 fresh installation to rice!
+# From Debian 12 base installation to SwayWM rice!
 
 ## Index
  - [Editing sudoers list](#adding-a-user-to-the-sudoers-list)
+ - [Connecting to WIFI](#connecting-to-wifi-from-a-cli)
  - [Turning on night light](#trying-to-turn-on-night-lightblue-light-filter)
  - [Install apps](#installing-the-apps-related-to-my-rice)
  - [Change font size](#changing-the-size-of-every-textfont)
- - [GNOME Shell extensions](#gnome-shell-extensions-of-the-rice)
- - [Adding window buttons](#adding-the-minimize-and-maximise-buttons-to-window-titlebars)
  - [Install custom fonts](#installing-custom-fonts)
 
 
@@ -31,9 +30,43 @@ root    ALL=(ALL:ALL) ALL
 
 After saving the file the user mentioned will be added to the sudoers list.
 
+### Connecting to wifi from a CLI
+It can be usefull to know your wifi interface name.
+**List wifi devices:**
+```
+sudo ip link show
+```
+**Start WPA interactive shell:**
+```
+sudo wpa_cli
+```
+**Usefull commands in WPA interactive shell:**
+Scan for wifi nearby:
+```
+scan
+scan_results
+```
+Add a new network:
+```
+add_network
+```
+The above command will return a number which is the network ID. Let's take 0 as an example.
+```
+set_network 0 ssid "SSID_here"
+set_network 0 psk "Passphrase_here"
+```
+To get an IP address via DHCP:
+```
+dhclient
+```
+After this the wifi should be connected.
+
 ### Trying to turn on "Night Light"/"Blue light filter"
-The Night Light feature may seem to not work when applied on a fresh install! This is because the night light is automatically set to work only from sunset to sunrise. To make it work manually by clicking the night light button:\
-	Open the settings app and Find the settings of night light. There, change the schedule to manual mode. Then set the time from 00:00 to 00:00.
+A command to put up a night light filter using **gammastep** has been added in the **Sway config**. If you need to do it manually:
+```
+gammastep -O <Temperature(1000k - 25000k)>
+```
+Warning: **Trying to run gammastep while a gammastep process started by the Sway config or someone else is already running will crash the running gammastep process and seems to mess up the currently running TTY.**
 
 ### Installing the apps related to my rice
 There is a script named "installapps.sh"(The script is not yet completed!) at **./scripts**. It will download the apps automatically. The script should be executed as sudo. The list of apps can be found out by reading the script. The apps will be declared in their respective arrays. Install the apps either using the script or manually.
@@ -47,15 +80,6 @@ Interface Text: 16\
 Monospace Text: 16\
 Scaling Factor: 1.30\
 I also change the default zoom of pages in firefox to **133%**. Firefox->Settings->Zoom->Default Zoom.
-
-### GNOME shell extensions of the rice
-There are some GNOME shell extensions required for the rice:\
-Dash to Dock, Blur my Shell, Hanabi\
-These(except the Hanabi extension) can be found at the [GNOME Extensions](https://extensions.gnome.org/) site. You need to search up the above mentioned extensions and install them on to your system. To install them from the site, you have to install and enable the browser extension that gnome provides. The instructions to do so will be displayed in the site itself.\
-For the Hanabi Extension you have to compile it from [source](https://github.com/jeffshee/gnome-ext-hanabi), its not yet available in the GNOME website. Follow the instructions in the github page to install it.
-
-### Adding the minimize and maximise buttons to window titlebars
-To add minimize and maximise buttons to a window, open the **GNOME Tweaks** app and find the option **Window Titlebars** in the sidebar. There you can add the minimize and maximise buttons for most windows.
 
 ### Installing custom fonts
 My native language is Malayalam. So when browsing the web I sometimes come across content that is displayed in Malayalam, the characters are replaced by placeholder characters. This is because Malayalam fonts are not included with debian. To install a font:\
