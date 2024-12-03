@@ -4,7 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-exec gammastep -O 3000 &
+xwayland force
+
+exec gammastep -O 3000
+exec python3 ~/.config/sway/inactive-windows-transparency.py
 
 ### Variables
 #

@@ -6,10 +6,6 @@ then
 	exit
 fi
 
-scriptdir="$(dirname $0)"
-ls $scriptdir/../
-exit
-
 # Creating the workspace directories
 mkdir -pv ~/workspace/main/
 mkdir ~/workspace/side/
@@ -36,4 +32,4 @@ sudo apt update
 sudo ./installapps.sh
 
 # Adding the custom configs
-./configman --add-all
+./configman --update-all

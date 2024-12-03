@@ -7,12 +7,6 @@ then
 fi
 
 # Functions that add the custom configs
-### conky
-AddConky()
-{
-	sudo rm /etc/conky/conky.conf
-	sudo cp ../configs/conky/conky.conf /etc/conky/
-}
 ### bash
 AddBash()
 {
@@ -38,7 +32,7 @@ AddWaybar()
 }
 
 if [ "$1" == "--update-all" ]; then
-	AddConky
+	AddBash
 	AddSway
 	AddWaybar
 elif [ "$1" == "--update" ]; then
