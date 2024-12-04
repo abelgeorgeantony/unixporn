@@ -54,10 +54,11 @@ The above command will return a number which is the network ID. Let's take 0 as 
 ```
 set_network 0 ssid "SSID_here"
 set_network 0 psk "Passphrase_here"
+enable_network 1
 ```
 To get an IP address via DHCP:
 ```
-dhclient
+sudo dhclient
 ```
 After this the wifi should be connected.
 
