@@ -6,8 +6,10 @@
 
 xwayland force
 
-exec gammastep -O 3000
-exec python3 ~/.config/sway/inactive-windows-transparency.py
+# Implement night light
+exec "gammastep -O 3000"
+# Make inactive windows transparent
+exec "python3 ~/.config/sway/inactive-windows-transparency.py | xargs swaymsg exec --"
 
 ### Variables
 #
@@ -26,12 +28,15 @@ set $term foot
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu wofi --show run | xargs swaymsg exec --
 set $menu fuzzel | xargs swaymsg exec --
+# Preffered screenlock
+set $lock swaylock --indicator-idle-visible --ignore-empty-password --show-keyboard-layout -c 00000022
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# Wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#output * bg ~/workspace/side/unixporn/wallpapers/windows_shrek.jpg fill
+#exec "mpvpaper"
 # Display scale
 output eDP-1 scale 1.8
 
@@ -81,6 +86,9 @@ output eDP-1 scale 1.8
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Lock the sway screen
+    bindsym $mod+x exec $lock
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -227,5 +235,7 @@ bar {
         #inactive_workspace #32323200 #32323200 #5c5c5c
     #}
 }
+
+#exec "swaylock --indicator-idle-visible --ignore-empty-password --show-keyboard-layout --image \"~/workspace/side/unixporn/wallpapers/windows_shrek.jpg\""
 
 include /etc/sway/config.d/*
