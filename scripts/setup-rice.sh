@@ -11,13 +11,13 @@ mkdir -pv ~/workspace/main/
 mkdir ~/workspace/side/
 
 # Moving the unixporn directory to side projects directory
-mv $scriptdir/../../unixporn ~/workspace/side/
+mv ../../unixporn ~/workspace/side/
 
 # Adding custom fonts(System-Wide)
 sudo mkdir -pv /usr/local/share/fonts/
 sudo cp -r ../fonts/* /usr/local/share/fonts/
 
-# Making the keyboard-backlight script globally accessible
+# Making the utitlity scripts globally accessible
 sudo ln ./utilities/keyboard-backlight /usr/bin/
 sudo ln ./utilities/fortuneteller.sh /usr/bin/
 
