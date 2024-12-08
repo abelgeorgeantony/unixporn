@@ -117,3 +117,5 @@ export PATH=$HOME/.local/bin:$PATH
 ansigreenb="\e[1;32m"
 ansiblueb="\e[1;34m"
 PS1="$(echo -e "\e[0;101m" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' ' && echo -e '\e[0m\n\e[1;32m$(whoami) @ $(date +%T)\n\e[1;34m$(pwd)\n\e[1;32m\h>>\e[0m')"
+
+fortune | cowsay | lolcat

@@ -18,7 +18,8 @@ sudo mkdir -pv /usr/local/share/fonts/
 sudo cp -r ../fonts/* /usr/local/share/fonts/
 
 # Making the keyboard-backlight script globally accessible
-sudo cp ./utilities/keyboard-backlight /bin/
+sudo ln ./utilities/keyboard-backlight /usr/bin/
+sudo ln ./utilities/fortuneteller.sh /usr/bin/
 
 # Adding 3rd parties to APT
 sudo mkdir -pv /etc/apt/keyrings

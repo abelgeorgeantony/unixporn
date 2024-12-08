@@ -36,7 +36,7 @@ include /etc/sway/config-vars.d/*
 #
 # Wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg ~/workspace/side/unixporn/wallpapers/windows_shrek.jpg fill
-#exec "mpvpaper"
+exec mpvpaper -o "loop" '*' ~/workspace/side/unixporn/wallpapers/livewall_1.mp4
 # Display scale
 output eDP-1 scale 1.8
 
@@ -49,13 +49,11 @@ output eDP-1 scale 1.8
 
 ### Idle configuration
 #
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+# Screenlock
+exec swayidle -w \
+          timeout 300 $lock \
+          timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 00000022'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
