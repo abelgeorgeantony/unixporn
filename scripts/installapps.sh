@@ -16,17 +16,16 @@ declare -a snap_apps
 declare -a flatpak_apps
 apt_apps+=("brightnessctl" "pavucontrol" "sway" "waybar" "swaylock" "swayidle" "fuzzel" "wofi" "gammastep" "wdisplays" "firefox-esr" "curl" "tree" "fzf" "bat" "htop" "torcs" "flightgear" "sl" "cmatrix" "fortunes" "cowsay" "lolcat" "acpi" "nodejs" "npm" "meson" "ninja-build" "cmake" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "nautilus" "imv" "mpv" "moc" "audacious" "qbittorrent" "gimp" "tmux" "neovim" "vim" "mdp" "taskwarrior" "gnome-multi-writer")
 apt_deps+=("build-essential" "xwayland" "wayland-protocols" "pkg-config" "libwayland-dev" "libegl-dev" "libmpv-dev" "python3-i3ipc" "libgtk-4-media-gstreamer" "fonts-material-design-icons-iconfont" "fonts-font-awesome")
-snap_apps+=("core" "snapd" "code --classic", "scrcpy", "steam", "telegram-desktop")
+snap_apps+=("core" "snapd" "code --classic" "scrcpy" "steam" "telegram-desktop")
 flatpak_apps+=("net.lutris.Lutris" "com.bitwig.BitwigStudio")
 
-installerrors=""
 outputmessage="APT apps:-\n"
 printf $outputmessage
 for app in ${apt_apps[@]};
 do
     printf "\nTrying to install $app"
     sudo apt -y install "$app"
-    appexistcheck="$((( dpkg -l $app 2>&1 ) | grep -E '^ii' > /dev/null ) && echo installed)"
+    appexistcheck=$((( dpkg -l "$app" 2>&1 ) | grep -E '^ii' > /dev/null ) && echo installed)
     if [ "${appexistcheck}" != "installed" ]; then
 	    outputmessage="${outputmessage}\e[1;31m$app not installed\n\e[0m"
     else
@@ -43,7 +42,7 @@ for dep in ${apt_deps[@]};
 do
     printf "\nTrying to install $dep"
     sudo apt -y install "$dep"
-    appexistcheck="$((( dpkg -l $dep 2>&1 ) | grep -E '^ii' > /dev/null ) && echo installed)"
+    appexistcheck=$((( dpkg -l "$dep" 2>&1 ) | grep -E '^ii' > /dev/null ) && echo installed)
     if [ "${appexistcheck}" != "installed" ]; then
 	    outputmessage="${outputmessage}\e[1;31m$dep not installed\n\e[0m"
     else
@@ -53,10 +52,29 @@ do
     printf "${outputmessage}"
 done
 
-# Installing Zed text editor
-curl -f https://zed.dev/install.sh | sh
-# Install Deno JS runtime
-curl -fsSL https://deno.land/install.sh | sh
+
+# Manual installs
+## mpvpaper
+git clone --single-branch https://github.com/GhostNaN/mpvpaper
+### Build
+cd mpvpaper
+meson setup build --prefix=/usr/local
+ninja -C build
+### Install
+ninja -C build install
+cd ..
+rm -rf mpvpaper
+
+## ani-cli
+git clone "https://github.com/pystardust/ani-cli.git"
+sudo cp ani-cli/ani-cli /usr/local/bin
+rm -rf ani-cli
+
+## Zed text editor
+curl -f https://zed.dev/install.sh | bash
+
+## Deno JS runtime
+curl -fsSL https://deno.land/install.sh | bash
 
 exit 1
 
