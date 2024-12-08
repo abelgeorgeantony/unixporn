@@ -114,21 +114,27 @@ export PATH=$HOME/.local/bin:$PATH
 . "/home/abelgeorgeantony/.deno/env"
 
 
-ANSI_RED_BG="\[\e[0;101m\]"
-ANSI_GREEN="\[\e[1;32m\]"
-ANSI_BLUE="\[\e[1;34m\]"
-ANSI_RESET="\[\e[0m\]"
-
-PROMPT_DIVIDER="$ANSI_RED_BG"
-col_len="$(tput cols)"
-i=0
-while [ $i -lt $col_len ];
-do
-	PROMPT_DIVIDER="$PROMPT_DIVIDER "
-	i=$(( $i + 1 ))
-done
-#PROMPT_DIVIDER="echo -e "$ANSI_RED_BG" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' '"
-PROMPT_TITLE="$ANSI_RESET\n$ANSI_GREEN$(whoami) @ $(date +%T)\n$ANSI_BLUE$(pwd)\n$ANSI_GREEN\h>>$ANSI_RESET"
+ANSI_RED_BG="\e[0;101m"
+ANSI_GREEN="\e[1;32m"
+ANSI_BLUE="\e[1;34m"
+ANSI_RESET="\e[0m"
+PROMPT_DIVIDER=""
+PROMPT_TITLE=""
+update_prompt_style_vars(){
+	PROMPT_DIVIDER="$ANSI_RED_BG"
+	col_len="$(tput cols)"
+	i=0
+	while [ $i -lt $col_len ];
+	do
+		PROMPT_DIVIDER="$PROMPT_DIVIDER "
+		i=$(( $i + 1 ))
+	done
+	#PROMPT_DIVIDER="echo -e "$ANSI_RED_BG" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' '"
+	PROMPT_TITLE="$ANSI_RESET\n$ANSI_GREEN$(whoami) @ $(date +%T)\n$ANSI_BLUE$(pwd)\n$ANSI_GREEN\h>>$ANSI_RESET"
+	echo -e $PROMPT_DIVIDER
+	echo -e $PROMPT_TITLE
+}
+PROMPT_COMMAND="update_prompt_style_vars"
 PS1="$(echo -e $PROMPT_DIVIDER && echo -e $PROMPT_TITLE)"
 
 fortuneteller.sh
