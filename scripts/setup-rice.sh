@@ -17,7 +17,7 @@ mv ../../unixporn ~/workspace/side/
 sudo mkdir -pv /usr/local/share/fonts/
 sudo cp -r ../fonts/* /usr/local/share/fonts/
 
-# Making the utitlity scripts globally accessible
+# Making the utitlity scripts globally accessible(using hard links)
 sudo ln ./utilities/keyboard-backlight /usr/bin/
 sudo ln ./utilities/fortuneteller.sh /usr/bin/
 sudo ln ./utilities/configman /usr/bin/
