@@ -20,6 +20,7 @@ sudo cp -r ../fonts/* /usr/local/share/fonts/
 # Making the utitlity scripts globally accessible
 sudo ln ./utilities/keyboard-backlight /usr/bin/
 sudo ln ./utilities/fortuneteller.sh /usr/bin/
+sudo ln ./utilities/configman /usr/bin/
 
 # Adding 3rd parties to APT
 sudo mkdir -pv /etc/apt/keyrings
@@ -33,4 +34,4 @@ sudo apt update
 sudo ./installapps.sh
 
 # Adding the custom configs
-./configman --update-all
+configman --update-all
