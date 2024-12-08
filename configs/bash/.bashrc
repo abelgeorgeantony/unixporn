@@ -114,8 +114,21 @@ export PATH=$HOME/.local/bin:$PATH
 . "/home/abelgeorgeantony/.deno/env"
 
 
-ansigreenb="\e[1;32m"
-ansiblueb="\e[1;34m"
-PS1="$(echo -e "\e[0;101m" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' ' && echo -e '\e[0m\n\e[1;32m$(whoami) @ $(date +%T)\n\e[1;34m$(pwd)\n\e[1;32m\h>>\e[0m')"
+ANSI_RED_BG="\[\e[0;101m\]"
+ANSI_GREEN="\[\e[1;32m\]"
+ANSI_BLUE="\[\e[1;34m\]"
+ANSI_RESET="\[\e[0m\]"
+
+PROMPT_DIVIDER="$ANSI_RED_BG"
+col_len="$(tput cols)"
+i=0
+while [ $i -lt $col_len ];
+do
+	PROMPT_DIVIDER="$PROMPT_DIVIDER "
+	i=$(( $i + 1 ))
+done
+#PROMPT_DIVIDER="echo -e "$ANSI_RED_BG" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' '"
+PROMPT_TITLE="$ANSI_RESET\n$ANSI_GREEN$(whoami) @ $(date +%T)\n$ANSI_BLUE$(pwd)\n$ANSI_GREEN\h>>$ANSI_RESET"
+PS1="$(echo -e $PROMPT_DIVIDER && echo -e $PROMPT_TITLE)"
 
 fortuneteller.sh
