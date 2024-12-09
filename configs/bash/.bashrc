@@ -114,10 +114,10 @@ export PATH=$HOME/.local/bin:$PATH
 . "/home/abelgeorgeantony/.deno/env"
 
 
-ANSI_RED_BG="\e[0;101m"
-ANSI_GREEN="\e[1;32m"
-ANSI_BLUE="\e[1;34m"
-ANSI_RESET="\e[0m"
+ANSI_RED_BG="\033[0;101m"
+ANSI_GREEN="\033[1;32m"
+ANSI_BLUE="\033[1;34m"
+ANSI_RESET="\033[0m"
 PROMPT_DIVIDER=""
 PROMPT_TITLE=""
 update_prompt_style_vars(){
@@ -129,12 +129,11 @@ update_prompt_style_vars(){
 		PROMPT_DIVIDER="$PROMPT_DIVIDER "
 		i=$(( $i + 1 ))
 	done
-	#PROMPT_DIVIDER="echo -e "$ANSI_RED_BG" && head -c "$(tput cols)" < /dev/zero | tr '\0' ' '"
-	PROMPT_TITLE="$ANSI_RESET\n$ANSI_GREEN$(whoami) @ $(date +%T)\n$ANSI_BLUE$(pwd)\n$ANSI_GREEN\h>>$ANSI_RESET"
-	echo -e $PROMPT_DIVIDER
-	echo -e $PROMPT_TITLE
+
+	PROMPT_TITLE="$ANSI_RESET\n$ANSI_GREEN$(whoami) @ $(date +%T)\n$ANSI_BLUE$(pwd)\n$ANSI_GREEN$(hostname)>>$ANSI_RESET"
 }
 PROMPT_COMMAND="update_prompt_style_vars"
-PS1="$(echo -e $PROMPT_DIVIDER && echo -e $PROMPT_TITLE)"
+PS1='$(printf "$PROMPT_DIVIDER$PROMPT_TITLE")'
+
 
 fortuneteller.sh

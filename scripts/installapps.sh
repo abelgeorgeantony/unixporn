@@ -15,7 +15,7 @@ declare -a apt_deps
 declare -a snap_apps
 declare -a flatpak_apps
 apt_apps+=("brightnessctl" "pavucontrol" "sway" "waybar" "swaylock" "swayidle" "fuzzel" "wofi" "gammastep" "wdisplays" "firefox-esr" "curl" "tree" "fzf" "bat" "htop" "torcs" "flightgear" "sl" "cmatrix" "fortunes" "cowsay" "lolcat" "acpi" "nodejs" "npm" "meson" "ninja-build" "cmake" "gettext" "zip" "unzip" "dconf-editor" "snapd" "flatpak" "nautilus" "imv" "mpv" "moc" "audacious" "qbittorrent" "gimp" "tmux" "neovim" "vim" "mdp" "taskwarrior" "gnome-multi-writer")
-apt_deps+=("build-essential" "xwayland" "wayland-protocols" "pkg-config" "libwayland-dev" "libegl-dev" "libmpv-dev" "python3-i3ipc" "libgtk-4-media-gstreamer" "fonts-material-design-icons-iconfont" "fonts-font-awesome")
+apt_deps+=("build-essential" "xwayland" "wayland-protocols" "pkg-config" "adb" "libusb-1.0-0-dev" "libwayland-dev" "libegl-dev" "libmpv-dev" "python3-i3ipc" "libgtk-4-media-gstreamer" "fonts-material-design-icons-iconfont" "fonts-font-awesome")
 snap_apps+=("core" "snapd" "code --classic" "scrcpy" "steam" "telegram-desktop")
 flatpak_apps+=("net.lutris.Lutris" "com.bitwig.BitwigStudio")
 
@@ -75,6 +75,13 @@ curl -f https://zed.dev/install.sh | bash
 
 ## Deno JS runtime
 curl -fsSL https://deno.land/install.sh | bash
+
+## scrcpy
+git clone https://github.com/Genymobile/scrcpy
+cd scrcpy
+./install_release.sh
+cd ..
+rm -rf scrcpy
 
 exit 1
 
