@@ -31,11 +31,19 @@ AddWaybar()
 	cp -r $customconfigs/waybar/. ~/.config/waybar/
 	swaymsg reload
 }
+### eww
+AddEww()
+{
+	mkdir -p ~/.config/eww
+	cp -r $customconfigs/eww/. ~/.config/eww/
+	eww reload
+}
 
 if [ "$1" == "--update-all" ]; then
 	AddBash
 	AddSway
 	AddWaybar
+	AddEww
 elif [ "$1" == "--update" ]; then
 	"Add"$2
 fi
