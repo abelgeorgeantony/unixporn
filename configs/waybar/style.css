@@ -8,7 +8,7 @@
 
 window#waybar {
     background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    border-bottom: 1px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
 }
 
@@ -37,9 +37,52 @@ window#waybar.hidden {
     border-bottom: 3px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-ytmusic, #custom-screenshot, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
-    margin: 0 5px;
+    margin: 0 1px;
+    border-radius: 3px;
+}
+
+#window {
+    font-size: 18px;
+    margin-left: 6px;
+}
+
+#custom-powermenu {
+    font-size: 27px;
+    margin-right: 5px;
+    margin-left: 4px;
+    padding: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+    color: #000000;
+    background-color: gold;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+
+#custom-ytmusic {
+    font-size: 20px;
+    margin-right: 3px;
+    margin-left: 4px;
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 4px;
+    padding-left: 6px;
+    color: #000000;
+    background-color: red;
+}
+
+#custom-screenshot {
+    font-size: 27px;
+    margin-right: 6px;
+    margin-left: 4px;
+    padding: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+    color: #000000;
+    background-color: grey;
 }
 
 #clock {
@@ -47,8 +90,8 @@ window#waybar.hidden {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #64727D;
+    color: #ffffff;
 }
 
 #battery.charging {
@@ -78,35 +121,34 @@ window#waybar.hidden {
     color: #000000;
 }
 
-#memory {
-    background: #9b59b6;
-}
-
 #backlight {
-    background: #90b1b1;
+    background: #1E90FF;
+    color: #ffffff;
 }
 
 #network {
-    background: #2980b9;
+    background: #1E90FF;
+    color: #ffffff;
 }
 
 #network.disconnected {
     background: #f53c3c;
+    color: #000000
 }
 
 #pulseaudio {
-    background: #f1c40f;
-    color: #000000;
+    background: #1E90FF;
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background: #90b1b1;
-    color: #2a5c45;
+    background: #f53c3c;
+    color: #000000;
 }
 
 #custom-media {
     background: #66cc99;
-    color: #2a5c45;
+    color: #26A65B;
 }
 
 .custom-spotify {
@@ -118,7 +160,7 @@ window#waybar.hidden {
 }
 
 #temperature {
-    background: #f0932b;
+    background: #2ecc71;
 }
 
 #temperature.critical {

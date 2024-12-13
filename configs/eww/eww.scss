@@ -1,5 +1,5 @@
 $surface-darkgrey: #20252b;
-$surface-fg: #949494;
+$surface-fg: white;
 $surface-lightgrey: #3d464e;
 $surface-grey: #2b3238;
 $surface-red: #f87070;
@@ -10,8 +10,9 @@ $surface-red: #f87070;
   font-family: Phosphor, Koulen;
   background-repeat: no-repeat;
   background-size: contain;
-  padding: 5em;
+  padding: 1.6em;
   color: rgba($surface-fg, 0.8);
+  border-radius: 9px;
 }
 
 .net-box,
@@ -27,6 +28,10 @@ $surface-red: #f87070;
   &:hover {
     color: $surface-red;
   }
+  padding-right: 4px;
+  padding-left: 4px;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 .btns-box {

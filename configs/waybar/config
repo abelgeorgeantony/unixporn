@@ -4,12 +4,18 @@
     "height": 32, // Waybar height
     // "width": 120, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["tray","pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "custom/powermenu"],
+    "modules-left": ["battery", "clock", "sway/window", "sway/mode", "custom/media"],
+    "modules-center": ["sway/workspaces"],
+    "fixed-center": true,
+    "modules-right": ["tray", "custom/ytmusic", "custom/screenshot", "network", "pulseaudio", "backlight", "custom/powermenu"],
     // Modules configuration
      "custom/powermenu": {
-     	"format": "P",
+     	"format": "{icon}",
+	"format-icons": {
+             "debianicon": "f",
+             "default": ""
+         },
+	"tooltip-format": "p",
      	"on-click": "eww open powermenu"
      },
      "sway/workspaces": {
@@ -44,9 +50,6 @@
     "cpu": {
         "format": "{usage}% "
     },
-    "memory": {
-        "format": "{}% "
-    },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -57,17 +60,20 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "states": [0,50],
-        "format-icons": ["", ""]
+        "states": [0,50,85],
+        "format-icons": ["", "", ""],
+	"on-scroll-up":   "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "on-click-right": "brightnessctl set 14%"
     },
     "battery": {
         "states": {
-            "good": 95,
+            "good": 90,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-alt": "{icon}",
+        "format": "{icon}",
+        "format-alt": "{capacity}%",
 	// "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -77,7 +83,8 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-alt": "{ipaddr}",
+	"format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠",
         "interval" : 7
@@ -98,15 +105,17 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
+    "custom/ytmusic": {
+        "format":"{icon}",
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+             "default": ""
         },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    }
+        "tooltip-format": "p",
+        "on-click": "firefox --new-window https://music.youtube.com"
+     },
+     "custom/screenshot": {
+        "format": "",
+        "tooltip-format": "p",
+        "on-click": "screenshottt"
+     }
 }

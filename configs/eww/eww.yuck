@@ -3,7 +3,7 @@
   :stacking "fg"
   :windowtype "normal"
   :wm-ignore true
-  :geometry (geometry :width "100%" :height "100%")
+  :geometry (geometry :width "60%" :height "52%" :anchor "center")
   (powermenu_layout))
 
 (defpoll time :interval "5s"
@@ -16,8 +16,8 @@
 
 (defwidget powermenu_layout []
   (box :class "layout-box" :space-evenly false :orientation "vertical"
-       :style "background-image: url('./wallpaper')"
-    (box :valign "start" :space-evenly false :spacing 25
+       :style "background-color: rgba(30, 144, 255, 0.9);"
+    (box :valign "start" :halign "start" :space-evenly false :spacing 25
       (_sundial)
       (_battery :status {EWW_BATTERY.BAT0.status}
                 :battery {EWW_BATTERY.BAT0.capacity}
@@ -25,16 +25,16 @@
                 :five "" :six "" :seven "")
       (_network :strength net :offline "" :excellent "" :good ""
                 :okay "" :slow "")
-      (label :text "|" :class "sep")
-      (button :onclick "eww close powermenu" :class "close-btn" ""))
-    (box :space-evenly false :hexpand true :vexpand true
       (box :spacing 15 :class "tm-box" :space-evenly false
             :valign "end" :halign "start"
-        (label :text "")
-        (label :text "${time.hour}  ${time.min}"))
-      (_buttons :shutdown "poweroff" :reboot "reboot"
+        (label :text "${time.hour}:${time.min}")))
+    (box :valign "start" :halign "end" :space-evenly false
+      (label :text "|" :class "sep")
+      (button :onclick "eww close powermenu" :class "close-btn" "X"))
+    (box :space-evenly false :hexpand true :vexpand true
+      (_buttons :shutdown "poweroff" :reboot "sudo shutdown --reboot now"
                 :logout "loginctl kill-session self"
-                :shutdown_icon "" :reboot_icon ""
+                :shutdown_icon "S" :reboot_icon ""
                 :logout_icon ""))))
 
 (defwidget _battery [battery status one two three
@@ -67,6 +67,12 @@
     (button :onclick shutdown shutdown_icon)
     (button :onclick reboot reboot_icon)
     (button :onclick logout logout_icon)))
+
+(defwidget _htop []
+  (box :class "bas" :spacing 5
+       :vexpand true :hexpand true
+       :valign "end" :halign "end"
+       :space-evenly false))
 
 (defwidget _sundial []
   (label :class "sundial-lbl" :halign "end" :hexpand true
