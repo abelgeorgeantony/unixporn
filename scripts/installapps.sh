@@ -36,6 +36,7 @@ do
 done
 
 clear
+
 outputmessage="${outputmessage}\nAPT dependencies:-\n"
 printf $outputmessage
 for dep in ${apt_deps[@]};
@@ -75,13 +76,21 @@ cd ../../../
 ###cd ..
 ###rm -rf wluma
 
+## Sway-Audio-Idle-Inhibit
+git clone https://github.com/ErikReider/SwayAudioIdleInhibit.git
+cd SwayAudioIdleInhibit
+meson build
+ninja -C build
+sudo meson install -C build
+cd ../
+
 ## mpvpaper
 git clone --single-branch https://github.com/GhostNaN/mpvpaper
-### Build
+#-- Build
 cd mpvpaper
 meson setup build --prefix=/usr/local
 ninja -C build
-### Install
+#-- Install
 ninja -C build install
 cd ..
 rm -rf mpvpaper
@@ -91,10 +100,10 @@ git clone "https://github.com/pystardust/ani-cli.git"
 sudo cp ani-cli/ani-cli /usr/local/bin
 rm -rf ani-cli
 
-## Zed text editor
+## Zed
 curl -f https://zed.dev/install.sh | bash
 
-## Deno JS runtime
+## Deno JS
 curl -fsSL https://deno.land/install.sh | bash
 
 ## scrcpy

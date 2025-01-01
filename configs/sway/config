@@ -6,6 +6,8 @@
 
 xwayland force
 
+# Make sway not idle when some audio is played(helpful to keep sway active when watching videos)
+exec "sway-audio-idle-inhibit"
 # Implement night light
 exec "gammastep -O 3000"
 # Make inactive windows transparent
@@ -33,19 +35,23 @@ set $lock swaylock --indicator-idle-visible --ignore-empty-password --show-keybo
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
-#
 # Wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg ~/workspace/side/unixporn/wallpapers/windows_shrek.jpg fill
 exec mpvpaper -o "loop" '*' ~/workspace/side/unixporn/wallpapers/livewall_1.mp4
-# Display scale
-output eDP-1 scale 1.8
-
-#
-# Example configuration:
-#
+output eDP-1 {
+	scale 1.8
+	#output * bg ~/workspace/side/unixporn/wallpapers/windows_shrek.jpg fill
+}
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Input configuration
+input "type:touchpad" {
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+}
+# You can get the names of your inputs by running: swaymsg -t get_inputs
 
 ### Idle configuration
 #
@@ -57,20 +63,6 @@ exec swayidle -w \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
@@ -233,7 +225,5 @@ bar {
         #inactive_workspace #32323200 #32323200 #5c5c5c
     #}
 }
-
-#exec "swaylock --indicator-idle-visible --ignore-empty-password --show-keyboard-layout --image \"~/workspace/side/unixporn/wallpapers/windows_shrek.jpg\""
 
 include /etc/sway/config.d/*
